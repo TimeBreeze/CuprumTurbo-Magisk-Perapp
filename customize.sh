@@ -6,6 +6,9 @@ LATESTARTSERVICE=true
 set_perm_recursive $MODPATH 0 0 0755 0644
 set_perm $MODPATH/CuAttach 0 0 0755
 
+rm -rf /data/powercfg.json
+rm -rf /data/powercfg.sh
+
 ui_print "- CuprumTurbo Scheduler Module"
 ui_print "- Installing..."
 
