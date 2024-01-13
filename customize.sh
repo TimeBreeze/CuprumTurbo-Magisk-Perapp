@@ -3,6 +3,8 @@ SKIPMOUNT=false
 PROPFILE=true
 POSTFSDATA=true
 LATESTARTSERVICE=true
+set_perm_recursive $MODPATH 0 0 0755 0644
+set_perm $MODPATH/CuAttach 0 0 0755
 
 ui_print "- CuprumTurbo Scheduler Module"
 ui_print "- Installing..."

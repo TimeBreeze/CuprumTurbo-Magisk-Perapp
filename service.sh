@@ -1,6 +1,8 @@
 #!/system/bin/sh
 MODDIR=${0%/*}
-
+sleep 15
+killall -15 CuAttach
+nohup $MODDIR/CuAttach > /dev/null 2>&1 
 
 function get_min_freq() {
         first_freq=$(cat "$1" | tr " " "\n" | head -1)
@@ -325,7 +327,6 @@ ${SCRIPT_PATH}/CuDaemon -R "${SCRIPT_PATH}/config.json" "/sdcard/Android/ct/cur_
 # else
  # exit 0
 # fi
-killall -15 CuAtattach
-nohup $MODDIR/CuAtattach > /dev/null 2>&1 &
+
 
 exit 0
