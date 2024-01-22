@@ -9,6 +9,12 @@ set_perm $MODPATH/CuAttach 0 0 0755
 rm -rf /data/powercfg.json
 rm -rf /data/powercfg.sh
 
+cp -f ${MODPATH}/powercfg/powercfg.json /storage/emulated/0/Android/ct/
+
+cp -f ${MODPATH}/powercfg/powercfg.sh /storage/emulated/0/Android/ct/
+ 
+chmod 777 /powercfg/powercfg.sh /storage/emulated/0/Android/ct/powercfg.sh
+
 ui_print "- CuprumTurbo Scheduler Module"
 ui_print "- Installing..."
 

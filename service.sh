@@ -4,62 +4,62 @@ sleep 60
 
 
 function get_min_freq() {
-        first_freq=$(cat "$1" | tr " " "\n" | head -1)
-        last_freq=$(cat "$1" | tr " " "\n" | tail -1)
-        if [ $first_freq -lt $last_freq ]; then
-                echo "${first_freq}"
-        else
-                echo "${last_freq}"
-        fi
+	first_freq=$(cat "$1" | tr " " "\n" | head -1)
+	last_freq=$(cat "$1" | tr " " "\n" | tail -1)
+	if [ $first_freq -lt $last_freq ]; then
+		echo "${first_freq}"
+	else
+		echo "${last_freq}"
+	fi
 }
 
 function get_max_freq() {
-        first_freq=$(cat "$1" | tr " " "\n" | head -1)
-        last_freq=$(cat "$1" | tr " " "\n" | tail -1)
-        if [ $first_freq -gt $last_freq ]; then
-                echo "${first_freq}"
-        else
-                echo "${last_freq}"
-        fi
+	first_freq=$(cat "$1" | tr " " "\n" | head -1)
+	last_freq=$(cat "$1" | tr " " "\n" | tail -1)
+	if [ $first_freq -gt $last_freq ]; then
+		echo "${first_freq}"
+	else
+		echo "${last_freq}"
+	fi
 }
 
 function write_value() {
-        for file in $2; do
-                if [ -e "${file}" ]; then
-                        echo "$1" >"${file}"
-                fi
-        done
+	for file in $2; do
+		if [ -e "${file}" ]; then
+			echo "$1" >"${file}"
+		fi
+	done
 }
 
 function lock_value() {
-        for file in $2; do
-                if [ -e "${file}" ]; then
-                        chown root:root "${file}"
-                        chmod 0666 "${file}"
-                        echo "$1" >"${file}"
-                        chmod 0444 "${file}"
-                fi
-        done
+	for file in $2; do
+		if [ -e "${file}" ]; then
+			chown root:root "${file}"
+			chmod 0666 "${file}"
+			echo "$1" >"${file}"
+			chmod 0444 "${file}"
+		fi
+	done
 }
 
 function change_task_cpuset() {
-        task_name=$1
-        cgroup=$2
-        for task_pid in $(ps -Ao pid,args | grep "${task_name}" | awk '{print $1}'); do
-                echo "${task_pid}" >"/dev/cpuset/${cgroup}/cgroup.procs"
-        done
+	task_name=$1
+	cgroup=$2
+	for task_pid in $(ps -Ao pid,args | grep "${task_name}" | awk '{print $1}'); do
+		echo "${task_pid}" >"/dev/cpuset/${cgroup}/cgroup.procs"
+	done
 }
 
 function change_task_sched() {
-        task_name=$1
-        cgroup=$2
-        for task_pid in $(ps -Ao pid,args | grep "${task_name}" | awk '{print $1}'); do
-                if [ -d /dev/stune ]; then
-                        echo "${task_pid}" >"/dev/stune/${cgroup}/cgroup.procs"
-                elif [ -d /dev/cpuctl ]; then
-                        echo "${task_pid}" >"/dev/cpuctl/${cgroup}/cgroup.procs"
-                fi
-        done
+	task_name=$1
+	cgroup=$2
+	for task_pid in $(ps -Ao pid,args | grep "${task_name}" | awk '{print $1}'); do
+		if [ -d /dev/stune ]; then
+			echo "${task_pid}" >"/dev/stune/${cgroup}/cgroup.procs"
+		elif [ -d /dev/cpuctl ]; then
+			echo "${task_pid}" >"/dev/cpuctl/${cgroup}/cgroup.procs"
+		fi
+	done
 }
 
 stop miuibooster 2>/dev/null
@@ -301,31 +301,21 @@ change_task_sched "compactd" ""
 
 # Check if /sdcard is ready.
 while [ ! -e /sdcard/.test_file ]; do
-        true >/sdcard/.test_file
-        sleep 1
+	true >/sdcard/.test_file
+	sleep 1
 done
 rm -f /sdcard/.test_file
 
 # Create CT Dir.
 if [ ! -d /sdcard/Android/ct/ ]; then
-        mkdir -p /sdcard/Android/ct/
-        echo "balance" >/sdcard/Android/ct/cur_mode.txt
+	mkdir -p /sdcard/Android/ct/
+	echo "balance" >/sdcard/Android/ct/cur_mode.txt
 fi
 
 SCRIPT_PATH=$(dirname $0)
 #CuDaemon -R [config] [mode] [log]
 ${SCRIPT_PATH}/CuDaemon -R "${SCRIPT_PATH}/config.json" "/sdcard/Android/ct/cur_mode.txt" "/sdcard/Android/ct/scheduler.log"
 
-# chmod 777 /data/adb/modules/ct_module/ct.sh
-
-# FIND_FILE=" /storage/emulated/0/Android/ct/scheduler.log"
-# FIND_STR="Daemon Running"
-# # 判断匹配函数，匹配函数不为0，则包含给定字符
-# if [ `grep -c "$FIND_STR" $FIND_FILE` -ne '0' ];then
- # sh /data/adb/modules/ct_module/ct.sh
-# else
- # exit 0
-# fi
 sleep 15
 killall -15 CuAttach
 nohup $MODDIR/CuAttach > /dev/null 2>&1 
