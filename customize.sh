@@ -1,3 +1,5 @@
+#!/system/bin/sh
+SKIPUNZIP=0
 MODDIR=${0%/*}
 SKIPMOUNT=false
 PROPFILE=true
@@ -6,36 +8,21 @@ LATESTARTSERVICE=true
 set_perm_recursive $MODPATH 0 0 0755 0644
 set_perm $MODPATH/CuAttach 0 0 0755
 
+sh modules/modules.sh
+
 rm -rf /data/powercfg.json
 rm -rf /data/powercfg.sh
 
-cp -f ${MODPATH}/powercfg/powercfg.json /storage/emulated/0/Android/ct/
 
-cp -f ${MODPATH}/powercfg/powercfg.sh /storage/emulated/0/Android/ct/
- 
-chmod 777 /powercfg/powercfg.sh /storage/emulated/0/Android/ct/powercfg.sh
 
 ui_print "- CuprumTurbo Scheduler Module"
 ui_print "- Installing..."
 
-
-echo "
-     　 ∧＿∧
-      （｡･ω･｡)つ━☆・*。
-       ⊂ OID ノ 　　　・゜+.
-      　しーＪ　　　°。+ *´¨)
-　　          　       　　.· ´¸.·*´¨) ¸.·*¨)
-       把你变成猪！      　(¸.·´ (¸.·’*┒
-"
 echo "- Soc平台:$(getprop Build.BRAND)"
 echo "- CPU型号:$(getprop ro.board.platform)"
 echo "- 手机代号:$(getprop ro.product.board)"
 echo "- 安卓版本:$(getprop ro.build.version.release)"
 echo "- SDK:$(getprop ro.build.version.sdk)"
-echo "- 型号:$(getprop ro.product.model)"
-echo "- 品牌:$(getprop ro.product.brand)"
-echo "- 架构:$(getprop ro.product.cpu.abi)"
-echo "- 语言:$(getprop ro.product.locale)"
 echo "- 内核版本:$(cat /proc/version)"
 
 

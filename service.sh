@@ -316,6 +316,8 @@ SCRIPT_PATH=$(dirname $0)
 #CuDaemon -R [config] [mode] [log]
 ${SCRIPT_PATH}/CuDaemon -R "${SCRIPT_PATH}/config.json" "/sdcard/Android/ct/cur_mode.txt" "/sdcard/Android/ct/scheduler.log"
 
+
+
 sleep 15
 killall -15 CuAttach
 nohup $MODDIR/CuAttach > /dev/null 2>&1 

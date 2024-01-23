@@ -1,6 +1,6 @@
 {
   "name": "Snapdragon8Gen3",
-  "author": "chenzyadb",
+  "author": "Suni",
   "configVersion": 9,
   "CpuGovernor": {
     "enable": true,
@@ -22,7 +22,7 @@
         "coreNum": 2,
         "perfScale": 270,
         "lowPowerFreq": 600,
-        "optimalFreq": 1800,
+        "optimalFreq": 1400,
         "modelFreq": 2960,
         "modelPower": 1890
       },
@@ -30,7 +30,7 @@
         "coreNum": 3,
         "perfScale": 270,
         "lowPowerFreq": 600,
-        "optimalFreq": 2200,
+        "optimalFreq": 1000,
         "modelFreq": 3150,
         "modelPower": 2290
       },
@@ -38,14 +38,14 @@
         "coreNum": 1,
         "perfScale": 370,
         "lowPowerFreq": 700,
-        "optimalFreq": 2200,
+        "optimalFreq": 800,
         "modelFreq": 2950,
         "modelPower": 3600
       }
     ],
     "modes": {
       "powersave": {
-        "powerLimit": 3000,
+        "powerLimit": 1000,
         "perfMargin": [
           10,
           10,
@@ -67,25 +67,25 @@
             "durationTime": 1000,
             "lowLatency": false,
             "extraMargin": 0,
-            "boost": 20
+            "boost": 0
           },
           "swipe": {
             "durationTime": 500,
             "lowLatency": false,
-            "extraMargin": 10,
+            "extraMargin": 5,
             "boost": 0
           },
           "gesture": {
             "durationTime": 1000,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 20
+            "extraMargin": 10,
+            "boost": 10
           },
           "heavyload": {
             "durationTime": 2000,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 0
+            "extraMargin": 0,
+            "boost": 15
           },
           "jank": {
             "durationTime": 0,
@@ -102,14 +102,14 @@
         }
       },
       "balance": {
-        "powerLimit": 4000,
+        "powerLimit": 3000,
         "perfMargin": [
-          20,
-          20,
-          20,
-          20
+          10,
+          13,
+          15,
+          10
         ],
-        "upRateLatency": 800,
+        "upRateLatency": 700,
         "overHeatTemp": 80,
         "burstCapacity": 12000,
         "recoverTime": 3000,
@@ -121,28 +121,28 @@
             "boost": 0
           },
           "tap": {
-            "durationTime": 1000,
+            "durationTime": 260,
             "lowLatency": false,
             "extraMargin": 0,
-            "boost": 20
+            "boost": 15
           },
           "swipe": {
-            "durationTime": 500,
+            "durationTime": 300,
             "lowLatency": false,
             "extraMargin": 10,
             "boost": 0
           },
           "gesture": {
-            "durationTime": 1000,
+            "durationTime": 400,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 20
+            "extraMargin": 10,
+            "boost": 10
           },
           "heavyload": {
-            "durationTime": 2000,
+            "durationTime": 1200,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 0
+            "extraMargin": 10,
+            "boost": 15
           },
           "jank": {
             "durationTime": 100,
@@ -159,16 +159,16 @@
         }
       },
       "performance": {
-        "powerLimit": 5000,
+        "powerLimit": 4500,
         "perfMargin": [
-          30,
-          30,
-          30,
+          10,
+          15,
+          20,
           30
         ],
-        "upRateLatency": 600,
+        "upRateLatency": 500,
         "overHeatTemp": 90,
-        "burstCapacity": 20000,
+        "burstCapacity": 13000,
         "recoverTime": 4000,
         "freqBurst": {
           "none": {
@@ -186,32 +186,32 @@
           "swipe": {
             "durationTime": 500,
             "lowLatency": false,
-            "extraMargin": 10,
+            "extraMargin": 5,
             "boost": 0
           },
           "gesture": {
             "durationTime": 1000,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 20
+            "extraMargin": 5,
+            "boost": 5
           },
           "heavyload": {
             "durationTime": 2000,
             "lowLatency": false,
-            "extraMargin": 20,
-            "boost": 0
+            "extraMargin": 0,
+            "boost": 10
           },
           "jank": {
-            "durationTime": 100,
+            "durationTime": 900,
             "lowLatency": true,
             "extraMargin": 0,
             "boost": 40
           },
           "bigJank": {
-            "durationTime": 500,
+            "durationTime": 1500,
             "lowLatency": true,
-            "extraMargin": 20,
-            "boost": 40
+            "extraMargin": 0,
+            "boost": 45
           }
         }
       },

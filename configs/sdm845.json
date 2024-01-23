@@ -1,6 +1,6 @@
 {
   "name": "Snapdragon845",
-  "author": "chenzyadb",
+  "author": "Suni",
   "configVersion": 9,
   "CpuGovernor": {
     "enable": true,
@@ -14,7 +14,7 @@
         "coreNum": 4,
         "perfScale": 100,
         "lowPowerFreq": 600,
-        "optimalFreq": 1400,
+        "optimalFreq": 1500,
         "modelFreq": 1800,
         "modelPower": 400
       },
@@ -22,14 +22,14 @@
         "coreNum": 4,
         "perfScale": 180,
         "lowPowerFreq": 800,
-        "optimalFreq": 2200,
+        "optimalFreq": 800,
         "modelFreq": 2800,
         "modelPower": 1760
       }
     ],
     "modes": {
       "powersave": {
-        "powerLimit": 3000,
+        "powerLimit": 1900,
         "perfMargin": [
           10,
           10
@@ -84,10 +84,10 @@
         }
       },
       "balance": {
-        "powerLimit": 4000,
+        "powerLimit": 3000,
         "perfMargin": [
-          20,
-          20
+          15,
+          15
         ],
         "upRateLatency": 800,
         "overHeatTemp": 80,
@@ -101,7 +101,7 @@
             "boost": 0
           },
           "tap": {
-            "durationTime": 1000,
+            "durationTime": 300,
             "lowLatency": false,
             "extraMargin": 0,
             "boost": 20
@@ -113,13 +113,13 @@
             "boost": 0
           },
           "gesture": {
-            "durationTime": 1000,
+            "durationTime": 400,
             "lowLatency": false,
             "extraMargin": 20,
             "boost": 20
           },
           "heavyload": {
-            "durationTime": 2000,
+            "durationTime": 1500,
             "lowLatency": false,
             "extraMargin": 20,
             "boost": 0
@@ -139,7 +139,7 @@
         }
       },
       "performance": {
-        "powerLimit": 5000,
+        "powerLimit": 4500,
         "perfMargin": [
           30,
           30
@@ -174,22 +174,22 @@
             "boost": 20
           },
           "heavyload": {
-            "durationTime": 2000,
+            "durationTime": 1500,
             "lowLatency": false,
-            "extraMargin": 20,
+            "extraMargin": 10,
             "boost": 0
           },
           "jank": {
-            "durationTime": 100,
+            "durationTime": 900,
             "lowLatency": true,
             "extraMargin": 0,
             "boost": 40
           },
           "bigJank": {
-            "durationTime": 500,
+            "durationTime": 1500,
             "lowLatency": true,
             "extraMargin": 20,
-            "boost": 40
+            "boost": 45
           }
         }
       },
